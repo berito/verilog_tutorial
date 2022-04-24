@@ -1,0 +1,59 @@
+/*******************************
+* Half Adder                   *
+* Behavioral Specification     *
+* Continous Assignment         *
+********************************/
+module HalfAdd (
+    a,b,c,s
+);
+    input a,b;
+    output c,s;
+    assign s=a^b;
+    assign c=a&b;
+endmodule
+/*******************************
+* Full Adder                   *
+* Hierarchical Design     *
+* from 2 Half Adders        *
+********************************/
+module FullAdd (
+    cin,x,y,cout,s
+);
+    input cin;
+    input x,y;
+    output cout; //carry output
+    output s;   //sum
+    wire c1,c2,s1; //interla wires
+    HalfAdd HA1 (x,y,c1,s1);
+    HalfAdd HA2 (s1,cin,c2,s);
+    assign cout=c1|c2;
+endmodule
+
+
+/*******************************
+* Full Adder                   *
+* with Display                 *
+* Hierarchical Design          *
+********************************/
+module FullAdd_Display(cin,x,y,a,b,c,d,e,f,g);
+input cin,x,y;
+output a,b,c,d,e,f,g;
+wire x,x2;
+FullAdd FA (cin,x,y,x1,x0);
+Display SS (x1,x0,a,b,c,d,e,f,g);
+
+endmodule
+
+module Display(x1,x0,a,b,c,d,e,f,g);
+input x1,x0;
+output a,b,c,d,e,f,g;
+assign a=x1|~x0;
+assign b=1;
+assign c=~x1|x0;
+assign d=x1|~x0;
+assign e=~x0;
+assign f=~x1&~x0;
+assign g=x1;
+
+
+endmodule
