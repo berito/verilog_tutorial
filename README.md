@@ -12,3 +12,6 @@ This is chapter 3 Verilog HDL topics covered source code
       iverilog  <file_name.v> 
    
     Note: Dont forget to redirect to the directory where your file is located or else file does not exist error will appear 
+
+## To view an output  in your terminal
+    vpp a.out 
