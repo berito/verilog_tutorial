@@ -6,22 +6,51 @@
 :vpi_module "vhdl_sys";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x558f4f23c0d0 .scope module, "HalfAdd" "HalfAdd" 2 6;
+S_0x55bfb8489030 .scope module, "FullAdd" "FullAdd" 2 19;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "cin"
+    .port_info 1 /INPUT 1 "x"
+    .port_info 2 /INPUT 1 "y"
+    .port_info 3 /OUTPUT 1 "cout"
+    .port_info 4 /OUTPUT 1 "s"
+L_0x55bfb84d0e40 .functor OR 1, L_0x55bfb84d0b80, L_0x55bfb84d0d60, C4<0>, C4<0>;
+v0x55bfb84d03a0_0 .net "c1", 0 0, L_0x55bfb84d0b80;  1 drivers
+v0x55bfb84d0460_0 .net "c2", 0 0, L_0x55bfb84d0d60;  1 drivers
+o0x7f6da86ce198 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55bfb84d0530_0 .net "cin", 0 0, o0x7f6da86ce198;  0 drivers
+v0x55bfb84d0630_0 .net "cout", 0 0, L_0x55bfb84d0e40;  1 drivers
+v0x55bfb84d06d0_0 .net "s", 0 0, L_0x55bfb84d0c60;  1 drivers
+v0x55bfb84d07c0_0 .net "s1", 0 0, L_0x55bfb84d0a50;  1 drivers
+o0x7f6da86ce018 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55bfb84d08b0_0 .net "x", 0 0, o0x7f6da86ce018;  0 drivers
+o0x7f6da86ce048 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55bfb84d0950_0 .net "y", 0 0, o0x7f6da86ce048;  0 drivers
+S_0x55bfb8489230 .scope module, "HA1" "HalfAdd" 2 27, 2 6 0, S_0x55bfb8489030;
  .timescale 0 0;
     .port_info 0 /INPUT 1 "a"
     .port_info 1 /INPUT 1 "b"
     .port_info 2 /OUTPUT 1 "c"
     .port_info 3 /OUTPUT 1 "s"
-o0x7f7d04490018 .functor BUFZ 1, C4<z>; HiZ drive
-o0x7f7d04490048 .functor BUFZ 1, C4<z>; HiZ drive
-L_0x558f4f27ea90 .functor XOR 1, o0x7f7d04490018, o0x7f7d04490048, C4<0>, C4<0>;
-L_0x558f4f27eb80 .functor AND 1, o0x7f7d04490018, o0x7f7d04490048, C4<1>, C4<1>;
-v0x558f4f23c2c0_0 .net "a", 0 0, o0x7f7d04490018;  0 drivers
-v0x558f4f27e790_0 .net "b", 0 0, o0x7f7d04490048;  0 drivers
-v0x558f4f27e850_0 .net "c", 0 0, L_0x558f4f27eb80;  1 drivers
-v0x558f4f27e920_0 .net "s", 0 0, L_0x558f4f27ea90;  1 drivers
+L_0x55bfb84d0a50 .functor XOR 1, o0x7f6da86ce018, o0x7f6da86ce048, C4<0>, C4<0>;
+L_0x55bfb84d0b80 .functor AND 1, o0x7f6da86ce018, o0x7f6da86ce048, C4<1>, C4<1>;
+v0x55bfb84bec10_0 .net "a", 0 0, o0x7f6da86ce018;  alias, 0 drivers
+v0x55bfb84cfb20_0 .net "b", 0 0, o0x7f6da86ce048;  alias, 0 drivers
+v0x55bfb84cfbe0_0 .net "c", 0 0, L_0x55bfb84d0b80;  alias, 1 drivers
+v0x55bfb84cfc80_0 .net "s", 0 0, L_0x55bfb84d0a50;  alias, 1 drivers
+S_0x55bfb84cfdc0 .scope module, "HA2" "HalfAdd" 2 28, 2 6 0, S_0x55bfb8489030;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "c"
+    .port_info 3 /OUTPUT 1 "s"
+L_0x55bfb84d0c60 .functor XOR 1, L_0x55bfb84d0a50, o0x7f6da86ce198, C4<0>, C4<0>;
+L_0x55bfb84d0d60 .functor AND 1, L_0x55bfb84d0a50, o0x7f6da86ce198, C4<1>, C4<1>;
+v0x55bfb84d0020_0 .net "a", 0 0, L_0x55bfb84d0a50;  alias, 1 drivers
+v0x55bfb84d00c0_0 .net "b", 0 0, o0x7f6da86ce198;  alias, 0 drivers
+v0x55bfb84d0160_0 .net "c", 0 0, L_0x55bfb84d0d60;  alias, 1 drivers
+v0x55bfb84d0230_0 .net "s", 0 0, L_0x55bfb84d0c60;  alias, 1 drivers
 # The file index is used to find the file name in the following table.
 :file_names 3;
     "N/A";
     "<interactive>";
-    "half_adder.v";
+    "full_adder.v";
